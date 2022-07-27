@@ -1,0 +1,130 @@
+{
+	"format_version": "1.12.0",
+	"minecraft:entity": {
+		"description": {
+			"identifier": "sedetiam:car",
+			"is_spawnable": true,
+			"is_summonable": true
+		},
+		"component_groups": {
+			"sedetiam:taxed_cg": {
+				"minecraft:addrider": {
+					"entity_type": "zombie",
+					"spawn_event": "sedetiam:helmet"
+				},
+				"minecraft:behavior.send_event": {
+					"priority": 0,
+					"event_choices": [
+						""
+					]
+				}
+			},
+			"sedetiam:smol_cg": {
+				"minecraft:scale": {
+					"value": 0.7
+				},
+				"minecraft:rideable": {
+					"controlling_seat": 0,
+					"family_types": [],
+					"seat_count": 1,
+					"seats": [
+						{
+							"lock_rider_rotation": 181,
+							"position": [
+								0,
+								1,
+								-1.3
+							]
+						}
+					]
+				}
+			}
+		},
+		"components": {
+			"minecraft:physics": {},
+			"minecraft:rideable": {
+				"controlling_seat": 0,
+				"family_types": [],
+				"seat_count": 1,
+				"seats": [
+					{
+						"lock_rider_rotation": 181,
+						"position": [
+							0,
+							1.3,
+							-1.3
+						]
+					}
+				]
+			},
+			"minecraft:item_controllable": {
+				"control_items": "lantern"
+			},
+			"minecraft:behavior.controlled_by_player": {
+				"priority": 0,
+				"mount_speed_multiplier": 2
+			},
+			"minecraft:nameable": {
+				"name_actions": [
+					{
+						"name_filter": "pino",
+						"on_named": {
+							"event": "/give @a cookie"
+						}
+					},
+					{
+						"name_filter": "taxi",
+						"on_named": {
+							"event": "sedetiam:taxed"
+						}
+					},
+					{
+						"name_filter": "lolol",
+						"on_named": {
+							"event": "sedetiam:lolol"
+						}
+					}
+				]
+			},
+			"minecraft:collision_box": {
+				"width": 2.5,
+				"height": 1.6
+			},
+			"minecraft:movement": {
+				"value": 0.15
+			},
+			"minecraft:movement.basic": {},
+			"minecraft:navigation.walk": {
+				"avoid_water": true
+			},
+			"minecraft:behavior.tempt": {
+				"priority": 1,
+				"speed_multiplier": 1.2,
+				"items": [
+					"apple",
+					"iron_ingot"
+				],
+				"within_radius": 7
+			},
+			"minecraft:behavior.random_stroll": {
+				"priority": 5
+			}
+		},
+		"events": {
+			"sedetiam:taxed": {
+				"add": {
+					"component_groups": [
+						"sedetiam:taxed_cg"
+					]
+				}
+			},
+			"sedetiam:lolol": {
+				"add": {
+					"component_groups": [
+						"sedetiam:smol_cg"
+					]
+				}
+			}
+		}
+	}
+}
