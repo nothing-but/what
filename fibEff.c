@@ -13,8 +13,8 @@ int main(int argc, char *argv[]) {
 		return -1; 
 	}
 	
-	//"raw" command line option
-	_Bool raw = argc == 3 && argv[2][0] == '-' && argv[2][1] == 'r';
+	//"verbose" command line option
+	_Bool verbose = argc == 3 && argv[2][0] == '-' && argv[2][1] == 'v';
 	
 	limit = strtol(argv[1], NULL, 10);
 	
@@ -27,8 +27,7 @@ int main(int argc, char *argv[]) {
 	
 	clock_t end_time = clock();
 
-	//"raw" command line option
-	if(!raw) {
+	if(verbose) {
 	  printf("Fibonacci Number %ld: ", limit);
 	}
 	
@@ -39,7 +38,7 @@ int main(int argc, char *argv[]) {
 
 	double time_taken = ((double) end_time - start_time)  / CLOCKS_PER_SEC;
         
-	if(!raw) {
+	if(verbose) {
 	  printf("Calculation Time: %f seconds\n", time_taken);
 	}
 }
