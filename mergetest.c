@@ -21,7 +21,11 @@ int main(int argc, char *argv[]) {
 	mpz_t res;
 	mpz_init(res);
 	
+	clock_t start_time = clock();
+	
 	mpz_fib_ui(res, limit);
+	
+	clock_t end_time = clock();
 
 	if(!raw) {
 	  printf("Fibonacci Number %ld: ", limit);
@@ -31,4 +35,10 @@ int main(int argc, char *argv[]) {
    	printf("\n");
 
    	mpz_clear(res);
+
+	double time_taken = ((double) end_time - start_time)  / CLOCKS_PER_SEC;
+        
+	if(!raw) {
+	  printf("Calculation Time: %f seconds\n", time_taken);
+	}
 }
