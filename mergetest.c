@@ -13,8 +13,8 @@ int main(int argc, char *argv[]) {
 		return -1; 
 	}
 	
-	//"raw" command line option
-	_Bool raw = argc == 3 && argv[2][0] == '-' && argv[2][1] == 'r';
+	//"verbose" command line option
+	_Bool verbose = argc == 3 && argv[2][0] == '-' && argv[2][1] == 'v';
 	
 	limit = strtol(argv[1], NULL, 10);
 	
@@ -23,7 +23,7 @@ int main(int argc, char *argv[]) {
 	
 	mpz_fib_ui(res, limit);
 
-	if(!raw) {
+	if(verbose) {
 	  printf("Fibonacci Number %ld: ", limit);
 	}
 	
