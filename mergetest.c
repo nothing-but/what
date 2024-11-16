@@ -38,7 +38,7 @@ int main(int argc, char *argv[]) {
 
 	double time_taken = ((double) end_time - start_time)  / CLOCKS_PER_SEC;
         
-	if(!raw) {
+	if(verbose) {
 	  printf("Calculation Time: %f seconds\n", time_taken);
 	}
 }
